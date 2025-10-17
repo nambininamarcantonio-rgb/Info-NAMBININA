@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Info-NAMBININA</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- PayPal SDK: client-id=sb (sandbox). Replace with your live client-id when ready -->
+  <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD"></script>
+</head>
+<body>
+
+  <!-- Audio -->
+  <audio id="musique" src="hira.mp3" loop></audio>
+  <button id="playMusique">▶️ Jouer la musique</button>
+
+  <!-- Sticky Nav -->
+  <nav>
+    <ul>
+      <li><a href="#accueil">Accueil</a></li>
+      <li><a href="#formateur">À propos</a></li>
+      <li><a href="#formations">Formations</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#calculator">Calculator</a></li>
+      <li><a href="#inscription">Inscription</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#avis">Avis</a></li>
+    </ul>
+  </nav>
+
+  <!-- Accueil -->
+  <header id="accueil" class="section-hero">
+    <div class="container">
+      <h1>Info-NAMBININA</h1>
+      <p class="phrase">Il faut avoir un objectif pour réussir.</p>
+      <!-- square with slight rounding (replace image file freely) -->
+      <img src="formateur.jpg" alt="Image Accueil" class="photo-rounded">
+    </div>
+  </header>
+
+  <!-- Formateur -->
+  <section id="formateur" class="section">
+    <div class="container narrow">
+      <h2>À propos du formateur</h2>
+      <img src="paysage.jpg" alt="Formateur" class="photo-rounded small">
+      <p>Formateur certifié en informatique, spécialisé en bureautique, multimédia, maintenance et développement web. Objectif: transmettre des compétences pratiques et professionnelles.</p>
+      <button class="btn" onclick="location.href='#inscription'">Contactez-moi</button>
+    </div>
+  </section>
+
+  <!-- Formations -->
+  <section id="formations" class="section">
+    <div class="container">
+      <h2>Nos Formations</h2>
+      <ul class="liste-formations">
+        <li>Informatique bureautique</li>
+        <li>Maintenance informatique</li>
+        <li>Informatique avancée</li>
+        <li>Internet et réseaux sociaux</li>
+        <li>Programmation site web</li>
+        <li>Multimédia informatique</li>
+      </ul>
+
+      <div class="emploi-temps">
+        <h3>Emploi du temps interactif</h3>
+        <label for="choix-cours">Choisir un cours :</label>
+        <select id="choix-cours" class="select">
+          <option value="bureautique">Informatique bureautique</option>
+          <option value="maintenance">Maintenance informatique</option>
+          <option value="avancee">Informatique avancée</option>
+          <option value="internet">Internet et réseaux sociaux</option>
+          <option value="web">Programmation site web</option>
+          <option value="multimedia">Multimédia informatique</option>
+        </select>
+
+        <table id="table-emploi" class="table">
+          <thead><tr><th>Jour</th><th>Heure</th><th>Cours</th></tr></thead>
+          <tbody>
+            <tr data-cours="bureautique"><td>Lundi</td><td>9h-12h</td><td>Informatique bureautique</td></tr>
+            <tr data-cours="maintenance"><td>Mardi</td><td>14h-17h</td><td>Maintenance informatique</td></tr>
+            <tr data-cours="avancee"><td>Mercredi</td><td>9h-12h</td><td>Informatique avancée</td></tr>
+            <tr data-cours="internet"><td>Jeudi</td><td>14h-17h</td><td>Internet et réseaux sociaux</td></tr>
+            <tr data-cours="web"><td>Vendredi</td><td>9h-12h</td><td>Programmation site web</td></tr>
+            <tr data-cours="multimedia"><td>Vendredi</td><td>14h-17h</td><td>Multimédia informatique</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio -->
+  <section id="portfolio" class="section">
+    <div class="container">
+      <h2>Nos étudiants</h2>
+      <div class="gallery">
+        <img src="etudiant1.jpg" alt="Etudiant 1">
+        <img src="etudiant2.jpg" alt="Etudiant 2">
+        <img src="etudiant3.jpg" alt="Etudiant 3">
+        <img src="etudiant4.jpg" alt="Etudiant 4">
+      </div>
+    </div>
+  </section>
+
+  <!-- Calculator -->
+  <section id="calculator" class="section">
+    <div class="container narrow">
+      <h2>Machine à calculer</h2>
+      <div class="calculator">
+        <input type="text" id="calc-display" readonly>
+        <div class="buttons">
+          <button>7</button><button>8</button><button>9</button><button>/</button>
+          <button>4</button><button>5</button><button>6</button><button>*</button>
+          <button>1</button><button>2</button><button>3</button><button>-</button>
+          <button>0</button><button>.</button><button>=</button><button>+</button>
+          <button>C</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Inscription & Paiement -->
+  <section id="inscription" class="section">
+    <div class="container narrow">
+      <h2>Inscription</h2>
+      <form id="form-inscription">
+        <label>Nom: <input type="text" id="nom" required></label>
+        <label>Email: <input type="email" id="email" required></label>
+
+        <label>Cours choisi:
+          <select id="cours-inscription" required>
+            <option value="bureautique" data-prix="50">Informatique bureautique - $50</option>
+            <option value="maintenance" data-prix="60">Maintenance informatique - $60</option>
+            <option value="avancee" data-prix="70">Informatique avancée - $70</option>
+            <option value="internet" data-prix="55">Internet et réseaux sociaux - $55</option>
+            <option value="web" data-prix="80">Programmation site web - $80</option>
+            <option value="multimedia" data-prix="65">Multimédia informatique - $65</option>
+          </select>
+        </label>
+
+        <label>Méthode paiement:
+          <select id="paiement" required>
+            <option value="paypal">Carte bancaire (PayPal)</option>
+            <option value="orange">Orange Money (simulation)</option>
+            <option value="airtel">Airtel Money (simulation)</option>
+            <option value="mvola">Mvola (simulation)</option>
+          </select>
+        </label>
+
+        <!-- PayPal container (used for card payments via PayPal) -->
+        <div id="paypal-button-container"></div>
+
+        <!-- Mobile money simulation fields (hidden unless chosen) -->
+        <div id="mobile-fields" class="mobile-fields" style="display:none;">
+          <label>Opérateur:
+            <select id="mm-operator">
+              <option value="orange">Orange Money</option>
+              <option value="airtel">Airtel Money</option>
+              <option value="mvola">Mvola</option>
+            </select>
+          </label>
+          <label>Numéro téléphone (ex: 261340000000): <input type="tel" id="mm-phone"></label>
+          <label>Référence / Message: <input type="text" id="mm-note" placeholder="Référence paiement"></label>
+          <button type="button" id="mm-confirm" class="btn">Confirmer paiement Mobile Money</button>
+        </div>
+
+      </form>
+
+      <!-- Receipt -->
+      <div id="recu" class="recu" style="display:none;"></div>
+    </div>
+  </section>
+
+  <!-- Contact & partage -->
+  <section id="contact" class="section">
+    <div class="container">
+      <h2>Contact</h2>
+      <p>Email: info@info-nambinina.mg</p>
+      <p>Téléphone: +261 34 00 000 00</p>
+      <div class="partage">
+        <h3>Partager ce site :</h3>
+        <a id="share-fb" href="#" target="_blank">Facebook</a>
+        <a id="share-twitter" href="#" target="_blank">Twitter</a>
+        <a id="share-wa" href="#" target="_blank">WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Avis -->
+  <section id="avis" class="section">
+    <div class="container">
+      <h2>Avis de nos étudiants</h2>
+      <div class="temoignages">
+        <blockquote>“Formation très pratique et instructive!” – Jean R.</blockquote>
+        <blockquote>“Le formateur est très compétent et patient.” – Aina M.</blockquote>
+        <blockquote>“J’ai beaucoup appris et je recommande cette formation.” – Lala R.</blockquote>
+      </div>
+    </div>
+  </section>
+
+  <footer class="section">
+    <div class="container">
+      <p>&copy; 2025 Info-NAMBININA</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
